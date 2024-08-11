@@ -1,41 +1,22 @@
-# config.yaml
-
-# General settings
-model_name: DCGAN
-latent_dim: 100
-
-# Generator configuration
-generator:
-  input_shape: 100
-  output_shape: [64, 64, 3]
-  initial_feature_map: 64
-  num_blocks: 4
-
-# Discriminator configuration
-discriminator:
+# Model configuration
+model:
   input_shape: [64, 64, 3]
   initial_feature_map: 64
-  num_blocks: 4
+  num_block: 4
+  
 
-# Training settings
+# Training configuration
 training:
+  num_generated_img: 5
   batch_size: 32
-  epochs: 100
-  ds_optimizer: adam
-  gen_optimizer: adam
-  loss_function: binary_crossentropy
+  epochs: 200
+  ds_optimizer: 'adam'
+  gen_optimizer: 'adam'
+  learning_rate: 0.0002
+  loss_fn: 'binary_crossentropy'
+  
 
-# Optimizer settings
-optimizer:
-  ds_optimizer:
-    type: Adam
-    learning_rate: 0.0002
-    beta_1: 0.5
-  gen_optimizer:
-    type: Adam
-    learning_rate: 0.0002
-    beta_1: 0.5
-
-# Other configurations
-random_noise:
-  noise_factor: 0.05
+# Save configuration
+save:
+  model_path: './saved_models'
+  generated_image_path: './results'
